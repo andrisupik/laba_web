@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Часті питання</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: grid;
+            grid-template-areas: 
+                "header"
+                "faq"
+                "footer";
+            grid-gap: 20px;
+        }
+
+        header {
+            grid-area: header;
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .faq {
+            grid-area: faq;
+            background-color: #ffffff;
+            padding: 30px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-item h3 {
+            margin: 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-item h3:hover {
+            background-color: #e9ecef;
+        }
+
+        .faq-item p {
+            display: none;
+            padding: 10px;
+            margin: 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        footer a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Анімація */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Адаптація для мобільних пристроїв */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-areas: 
+                    "header"
+                    "faq"
+                    "footer";
+                grid-gap: 10px;
+            }
+
+            header, .faq, footer {
+                padding: 15px;
+            }
+
+            footer a {
+                font-size: 20px;
+                margin: 0 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Основний контейнер -->
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>FAQ - Часті питання</h1>
+            <p>Отримайте відповіді на найпоширеніші запитання</p>
+        </header>
+
+        <!-- FAQ Section -->
+        <div class="faq">
+            <h2>Часті питання</h2>
+
+            <div class="faq-item">
+                <h3>Що таке CRM для виробників меблів?</h3>
+                <p>CRM для виробників меблів — це система управління взаємовідносинами з клієнтами, яка допомагає виробникам ефективно керувати замовленнями, слідкувати за процесом виготовлення меблів і оптимізувати всі етапи виробництва.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Які можливості надає система?</h3>
+                <p>CRM-система дозволяє керувати усіма аспектами виробництва — від прийняття замовлень до відстежування процесу виготовлення, доставки і обслуговування клієнтів. Вона також інтегрується з різними бізнес-процесами для покращення ефективності роботи.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Як почати користуватись системою?</h3>
+                <p>Щоб розпочати роботу з нашою CRM-системою, зв'яжіться з нами через форму зворотного зв'язку або через будь-який із контактів на нашому сайті. Ми допоможемо налаштувати систему під ваші потреби.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Чи можна інтегрувати CRM з іншими системами?</h3>
+                <p>Так, наша CRM-система підтримує інтеграцію з багатьма іншими бізнес-інструментами, такими як ERP, системи управління виробництвом і бухгалтерські програми.</p>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Зв'яжіться з нами:</p>
+            <a href="tel:+380123456789" class="fas fa-phone" title="Телефон"></a>
+            <a href="mailto:info@furniturecrm.com" class="fas fa-envelope" title="Email"></a>
+            <a href="https://t.me/yourtelegram" class="fab fa-telegram" title="Telegram"></a>
+            <a href="https://wa.me/yourwhatsapp" class="fab fa-whatsapp" title="WhatsApp"></a>
+            <a href="viber://chat?number=+380123456789" class="fab fa-viber" title="Viber"></a>
+        </footer>
+    </div>
+
+    <script>
+        // Скрытие и раскрытие ответа на вопрос
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+
+</body>
+
+</html>

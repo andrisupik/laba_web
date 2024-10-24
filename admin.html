@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сторінка адмін панелі</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        table td img {
+            width: 50px;
+            height: auto;
+        }
+
+        table td .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .actions a {
+            color: #007bff;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .actions a:hover {
+            color: #0056b3;
+        }
+
+        /* Адаптація для мобільних пристроїв */
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            table th, table td {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Сторінка адмін панелі</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Назва</th>
+                    <th>ГРН</th>
+                    <th>Photo</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Шкаф з фанери</td>
+                    <td>1500.00</td>
+                    <td><img src="https://via.placeholder.com/50" alt="Шкаф"></td>
+                    <td class="actions">
+                        <a href="#" class="fas fa-eye" title="Перегляд"></a>
+                        <a href="#" class="fas fa-edit" title="Редагування"></a>
+                        <a href="#" class="fas fa-trash" title="Видалення"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Комод дерев'яний</td>
+                    <td>2000.00</td>
+                    <td><img src="https://via.placeholder.com/50" alt="Комод"></td>
+                    <td class="actions">
+                        <a href="#" class="fas fa-eye" title="Перегляд"></a>
+                        <a href="#" class="fas fa-edit" title="Редагування"></a>
+                        <a href="#" class="fas fa-trash" title="Видалення"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

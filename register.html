@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        .gender-container {
+            margin-bottom: 10px;
+        }
+
+        .gender-label {
+            margin-right: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #343a40;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #495057;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .success {
+            color: green;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .checkbox {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Реєстрація</h2>
+        <form id="registrationForm" action="/register" method="POST" enctype="multipart/form-data">
+            <input type="email" id="email" name="email" placeholder="Введіть email" required>
+            <span id="emailError" class="error-message">Невірний формат email</span>
+
+            <input type="password" id="password" name="password" placeholder="Введіть пароль" required>
+            <span id="passwordError" class="error-message">Пароль має бути не менше 6 символів</span>
+
+            <input type="text" id="lastName" name="last_name" placeholder="Прізвище" required>
+            <span id="lastNameError" class="error-message">Поле Прізвище не може містити числа або бути порожнім</span>
+
+            <input type="text" id="firstName" name="first_name" placeholder="Ім'я" required>
+            <span id="firstNameError" class="error-message">Поле Ім'я не може містити числа або бути порожнім</span>
+
+            <input type="text" id="patronymic" name="patronymic" placeholder="По батькові" required>
+            <span id="patronymicError" class="error-message">Поле По батькові не може містити числа або бути порожнім</span>
+
+            <input type="date" id="dob" name="dob" placeholder="Дата народження" required>
+            <span id="dobError" class="error-message">Оберіть дату народження</span>
+
+            <select id="group" name="group" required>
+                <option value="">Оберіть групу</option>
+                <option value="Група 1">Група 1</option>
+                <option value="Група 2">Група 2</option>
+                <option value="Група 3">Група 3</option>
+            </select>
+            <span id="groupError" class="error-message">Оберіть групу</span>
+
+            <div class="gender-container">
+                <label class="gender-label">Стать:</label>
+                <label><input type="radio" name="gender" value="Чоловіча" required> Чоловіча</label>
+                <label><input type="radio" name="gender" value="Жіноча" required> Жіноча</label>
+            </div>
+            <span id="genderError" class="error-message">Оберіть стать</span>
+
+            <input type="text" id="phone" name="phone" placeholder="Номер телефону" required>
+            <span id="phoneError" class="error-message">Невірний формат номеру</span>
+
+            <input type="file" name="file" accept=".jpg,.jpeg,.png,.pdf" required>
+            <button type="submit">Зареєструватись</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Список зареєстрованих користувачів</h2>
+        <button id="deleteSelected">Видалити вибрані</button>
+        <button id="duplicateSelected">Дублювати вибрані</button>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th class="checkbox"><input type="checkbox" id="selectAll"></th>
+                    <th>Прізвище</th>
+                    <th>Ім'я</th>
+                    <th>По батькові</th>
+                    <th>Email</th>
+                    <th>Телефон</th>
+                    <th>Дата народження</th>
+                    <th>Група</th>
+                    <th>Стать</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Дані користувачів будуть додані сюди -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Маска для номера телефону
+            $('#phone').mask('+38(000) 000-00-00', { placeholder: "+38(0__) -___-__-__" });
+
+            function validateInput(id, condition, errorId) {
+                const input = document.querySelector(id);
+                const error = document.querySelector(errorId);
+
+                if (!condition(input.value)) {
+                    error.style.display = 'block';
+                    return false;
+                } else {
+                    error.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function isNameValid(value) {
+                return /^[A-Za-zА-Яа-яЁёІіЇїЄє]+$/.test(value);
+            }
+
+            const registrationForm = document.getElementById('registrationForm');
+            registrationForm.addEventListener('submit', function (e) {
+                e.preventDefault(); // Запобігаємо стандартній відправці форми
+
+                const emailValid = validateInput('#email', val => /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(val), '#emailError');
+                const passwordValid = validateInput('#password', val => val.length >= 6, '#passwordError');
+                const lastNameValid = validateInput('#lastName', isNameValid, '#lastNameError');
+                const firstNameValid = validateInput('#firstName', isNameValid, '#firstNameError');
+                const patronymicValid = validateInput('#patronymic', isNameValid, '#patronymicError');
+                const phoneValid = validateInput('#phone', val => /^\+38\(0\d{2}\) \d{3}-\d{2}-\d{2}$/.test(val), '#phoneError');
+                const dobValid = validateInput('#dob', val => val !== '', '#dobError');
+                const groupValid = validateInput('#group', val => val !== '', '#groupError');
+                const genderValid = document.querySelector('input[name="gender"]:checked') !== null;
+
+                if (emailValid && passwordValid && lastNameValid && firstNameValid && patronymicValid && phoneValid && dobValid && groupValid && genderValid) {
+                    // Якщо всі поля заповнені правильно, додаємо дані до таблиці
+                    const userRow = `
+                        <tr>
+                            <td class="checkbox"><input type="checkbox" class="userCheckbox"></td>
+                            <td>${document.getElementById('lastName').value}</td>
+                            <td>${document.getElementById('firstName').value}</td>
+                            <td>${document.getElementById('patronymic').value}</td>
+                            <td>${document.getElementById('email').value}</td>
+                            <td>${document.getElementById('phone').value}</td>
+                            <td>${document.getElementById('dob').value}</td>
+                            <td>${document.getElementById('group').value}</td>
+                            <td>${document.querySelector('input[name="gender"]:checked').value}</td>
+                        </tr>`;
+                    document.querySelector('#userTable tbody').insertAdjacentHTML('beforeend', userRow);
+                    registrationForm.reset(); // Скидаємо форму
+                }
+            });
+
+            document.getElementById('selectAll').addEventListener('change', function () {
+                const checkboxes = document.querySelectorAll('.userCheckbox');
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.checked = this.checked;
+                }, this);
+            });
+
+            document.getElementById('deleteSelected').addEventListener('click', function () {
+                const selectedCheckboxes = document.querySelectorAll('.userCheckbox:checked');
+                selectedCheckboxes.forEach(function (checkbox) {
+                    checkbox.closest('tr').remove();
+                });
+            });
+
+            document.getElementById('duplicateSelected').addEventListener('click', function () {
+                const selectedCheckboxes = document.querySelectorAll('.userCheckbox:checked');
+                selectedCheckboxes.forEach(function (checkbox) {
+                    const row = checkbox.closest('tr');
+                    const newRow = row.cloneNode(true);
+                    newRow.querySelector('.userCheckbox').checked = false; // Скидаємо чекбокс
+                    document.querySelector('#userTable tbody').appendChild(newRow);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM для виробників меблів</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: grid;
+      grid-template-areas:
+        "header"
+        "about"
+        "clients"
+        "contacts"
+        "footer";
+      grid-gap: 20px;
+    }
+
+    header {
+      grid-area: header;
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .about, .clients, .contacts {
+      padding: 30px;
+      text-align: center;
+      animation: fadeInUp 2s ease-in-out;
+    }
+
+    .about {
+      grid-area: about;
+      background-color: #ffffff;
+    }
+
+    .clients {
+      grid-area: clients;
+      background-color: #f8f9fa;
+    }
+
+    .contacts {
+      grid-area: contacts;
+      background-color: #ffffff;
+    }
+
+    footer {
+      grid-area: footer;
+      text-align: center;
+      padding: 20px;
+      background-color: #343a40;
+      color: white;
+    }
+
+    footer a {
+      font-size: 20px;
+      margin: 0 8px;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    /* Анімація */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Адаптація для мобільних пристроїв */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-areas:
+          "header"
+          "about"
+          "clients"
+          "contacts"
+          "footer";
+        grid-gap: 10px;
+      }
+
+      header, .about, .clients, .contacts, footer {
+        padding: 15px;
+      }
+
+      footer a {
+        font-size: 20px;
+        margin: 0 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Основний контейнер -->
+  <div class="container">
+    
+    <!-- Header -->
+    <header>
+      <h1>CRM для виробників меблів</h1>
+      <p>Керування замовленнями та процесом виготовлення</p>
+      <nav>
+        <a href="register.html">Регістрація</a> |
+        <a href="login.html">Вход</a> |
+        <a href="faq.html">FAQ</a> |
+        <a href="admin.html">Адмін панель</a>
+      </nav>
+    </header>
+    
+    <!-- Про проект -->
+    <div class="about" id="about">
+      <h2>Про проект</h2>
+      <p>Наша CRM-система дозволяє ефективно керувати замовленнями, слідкувати за процесом виготовлення меблів, забезпечуючи максимальну прозорість.</p>
+    </div>
+    
+    <!-- Наші клієнти -->
+    <div class="clients" id="clients">
+      <h2>Опис можливостей</h2>
+      <p>Системи управління замовленнями і виробництвом для меблевих виробників забезпечують інтеграцію всіх етапів — від прийому замовлення до доставки.</p>
+    </div>
+    
+    <!-- Контакти -->
+    <div class="contacts" id="contacts">
+      <h2>Про нас</h2>
+      <p>Ми спеціалізуємося на виготовленні меблів, поєднуючи сучасні технології з традиційними ремеслами. Наше виробництво пропонує широкий асортимент.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>Зв'яжіться з нами:</p>
+      <a href="tel:+380123456789" class="fas fa-phone" title="Телефон"></a>
+      <a href="mailto:info@furniturecrm.com" class="fas fa-envelope" title="Email"></a>
+      <a href="https://t.me/yourtelegram" class="fab fa-telegram" title="Telegram"></a>
+      <a href="https://wa.me/yourwhatsapp" class="fab fa-whatsapp" title="WhatsApp"></a>
+      <a href="viber://chat?number=+380123456789" class="fab fa-viber" title="Viber"></a>
+    </footer>
+
+  </div>
+</body>
+
+</html>
